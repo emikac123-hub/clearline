@@ -49,7 +49,7 @@ databaseChangeLog:
                   constraints:
                     nullable: false
         - addForeignKeyConstraint:
-            baseTableName: "sku"
+            baseTableName: "skus"
             baseColumnNames: "tenant_id"
             constraintName: "fk_tenant_sku_id"
             referencedTableName: "tenants"
