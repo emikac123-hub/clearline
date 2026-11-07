@@ -1,6 +1,6 @@
 databaseChangeLog:
   - changeSet:
-      id: create-table-tenants
+      id: create-table-skus
       author: system
       changes:
         - createTable:

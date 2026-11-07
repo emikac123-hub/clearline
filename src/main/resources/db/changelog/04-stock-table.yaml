@@ -1,6 +1,6 @@
 databaseChangeLog:
   - changeSet:
-      id: create-table-tenants
+      id: create-table-stock
       author: system
       changes:
         - createTable:
@@ -15,7 +15,7 @@ databaseChangeLog:
                     primaryKeyName: pk_stock
               - column:
                   name: qty
-                  type: number
+                  type: int
                   constraints:
                     nullable: false
                     checkConstraint: "qty >= 0"
@@ -51,7 +51,10 @@ databaseChangeLog:
                     nullable: false
               - column:
                   name: version
-                  type: number
+                  type: bigint
+                  constraints:
+                    nullable: false
+                  defaultValue: "0"
 
 
         - addUniqueConstraint:

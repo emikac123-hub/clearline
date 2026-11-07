@@ -1,6 +1,6 @@
 databaseChangeLog:
   - changeSet:
-      id: create-table-tenants
+      id: create-table-reservations
       author: system
       changes:
         - createTable:
@@ -30,9 +30,10 @@ databaseChangeLog:
                     nullable: false
               - column:
                   name: qty
-                  type: number
+                  type: int
                   constraints:
-                    nullable: false              
+                    nullable: false
+                    checkConstraint: "qty >= 0"           
               - column:
                   name: modified_date
                   type: TIMESTAMP
@@ -79,7 +80,11 @@ databaseChangeLog:
             baseTableName: "reservations"
             baseColumnNames: "tenant_id"
             constraintName: "fk_tenant_reservations_id"
-            referencedTableName: "tenant"
+            referencedTableName: "tenants"
             referencedColumnNames: "tenant_id"
             onDelete: CASCADE
             onUpdate: RESTRICT
+        - addUniqueConstraint:
+            tableName: "reservations"
+            columnNames: order_id, sku_id
+            constraintName: "uq_reservations_order_sku"

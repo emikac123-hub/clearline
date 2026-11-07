@@ -1,6 +1,6 @@
 databaseChangeLog:
   - changeSet:
-      id: create-table-tenants
+      id: create-table-order-lines
       author: system
       changes:
         - createTable:
@@ -15,9 +15,10 @@ databaseChangeLog:
                     primaryKeyName: pk_order_lines
               - column:
                   name: qty
-                  type: number
+                  type: int
                   constraints:
-                    nullable: false              
+                    nullable: false
+                    checkConstraint: "qty >= 0"            
               - column:
                   name: modified_date
                   type: TIMESTAMP
@@ -41,11 +42,6 @@ databaseChangeLog:
               - column:
                   name: created_by
                   type: VARCHAR(100)
-                  constraints:
-                    nullable: false
-              - column:
-                  name: orders_placed
-                  type: number
                   constraints:
                     nullable: false
               - column:
