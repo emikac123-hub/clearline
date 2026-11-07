@@ -54,22 +54,27 @@ databaseChangeLog:
                   constraints:
                     nullable: false
               - column:
-                  name: status #possible status could be ORDERED, PROCESSED, DENIED, WITHDRAWN, BID_ON
+                  name: status #RESERVED or REJECTED
                   type: VARCHAR(100)
                   constraints:
                     nullable: false
+              - column:
+                  name: rejection_reason
+                  type: VARCHAR(100)
+                  constraints:
+                    nullable: true
         - addForeignKeyConstraint:
             baseTableName: "orders"
             baseColumnNames: "sku_id"
-            constraintName: "fk_sku_id"
-            referencedTableName: "sku"
+            constraintName: "fk_sku_orders_id"
+            referencedTableName: "skus"
             referencedColumnNames: "sku_id"
             onDelete: CASCADE
             onUpdate: RESTRICT
         - addForeignKeyConstraint:
             baseTableName: "orders"
             baseColumnNames: "tenant_id"
-            constraintName: "fk_tenant_id"
+            constraintName: "fk_tenant_orders_id"
             referencedTableName: "tenants"
             referencedColumnNames: "tenant_id"
             onDelete: CASCADE

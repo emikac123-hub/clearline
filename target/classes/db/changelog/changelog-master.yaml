@@ -9,3 +9,5 @@ databaseChangeLog:
       file: db/changelog/04-stock-table.yaml
   - include:
       file: db/changelog/05-order-lines-table.yaml
+  - include:
+      file: db/changelog/06-reservations-table.yaml

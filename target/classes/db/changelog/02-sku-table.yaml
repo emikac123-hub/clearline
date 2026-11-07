@@ -4,7 +4,7 @@ databaseChangeLog:
       author: system
       changes:
         - createTable:
-            tableName: sku
+            tableName: skus
             columns:
               - column:
                   name: sku_id
@@ -51,7 +51,7 @@ databaseChangeLog:
         - addForeignKeyConstraint:
             baseTableName: "sku"
             baseColumnNames: "tenant_id"
-            constraintName: "fk_tenant_id"
+            constraintName: "fk_tenant_sku_id"
             referencedTableName: "tenants"
             referencedColumnNames: "tenant_id"
             onDelete: CASCADE
