@@ -12,7 +12,7 @@ databaseChangeLog:
                   constraints:
                     primaryKey: true
                     nullable: false
-                    primaryKeyName: pk_sku
+                    primaryKeyName: pk_skus
               - column:
                   name: display_name
                   type: VARCHAR(255)

@@ -2,7 +2,7 @@ spring:
   application:
     name: clearline
   liquibase:
-    change-log: classpath:db/changelog/db.changelog-master.yaml
-    url: jdbc:postgresql://localhost:5432/clearline_db
+    change-log: classpath:db/changelog/changelog-master.yaml
+    url: jdbc:postgresql://localhost:5432/postgres_db
     user: root
     password: password

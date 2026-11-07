@@ -33,7 +33,8 @@ databaseChangeLog:
                   type: int
                   constraints:
                     nullable: false
-                    checkConstraint: "qty >= 0"           
+                    checkConstraint: "qty >= 0"
+                 
               - column:
                   name: modified_date
                   type: TIMESTAMP
@@ -52,11 +53,6 @@ databaseChangeLog:
               - column:
                   name: created_by
                   type: VARCHAR(100)
-                  constraints:
-                    nullable: false
-              - column:
-                  name: orders_placed
-                  type: number
                   constraints:
                     nullable: false
 
