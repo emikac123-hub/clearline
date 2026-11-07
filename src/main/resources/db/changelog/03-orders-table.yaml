@@ -1,6 +1,6 @@
 databaseChangeLog:
   - changeSet:
-      id: create-table-tenants
+      id: create-table-orders
       author: system
       changes:
         - createTable:
@@ -20,7 +20,7 @@ databaseChangeLog:
                     nullable: false 
               - column:
                   name: bid_placed_by
-                  type: TIMESTAMP
+                  type: VARCHAR(100)
                   constraints:
                     nullable: false           
               - column:
@@ -44,32 +44,24 @@ databaseChangeLog:
                   constraints:
                     nullable: false
               - column:
-                  name: sku_id
-                  type: VARCHAR(36)
-                  constraints:
-                    nullable: false
-              - column:
                   name: created_by
                   type: VARCHAR(100)
                   constraints:
                     nullable: false
               - column:
-                  name: status #possible status could be ORDERED, PROCESSED, DENIED, WITHDRAWN, BID_ON
+                  name: status #RESERVED or REJECTED
                   type: VARCHAR(100)
                   constraints:
                     nullable: false
-        - addForeignKeyConstraint:
-            baseTableName: "orders"
-            baseColumnNames: "sku_id"
-            constraintName: "fk_sku_id"
-            referencedTableName: "sku"
-            referencedColumnNames: "sku_id"
-            onDelete: CASCADE
-            onUpdate: RESTRICT
+              - column:
+                  name: rejection_reason
+                  type: VARCHAR(100)
+                  constraints:
+                    nullable: true
         - addForeignKeyConstraint:
             baseTableName: "orders"
             baseColumnNames: "tenant_id"
-            constraintName: "fk_tenant_id"
+            constraintName: "fk_tenant_orders_id"
             referencedTableName: "tenants"
             referencedColumnNames: "tenant_id"
             onDelete: CASCADE

@@ -1,6 +1,6 @@
 databaseChangeLog:
   - changeSet:
-      id: create-table-tenants
+      id: create-table-stock
       author: system
       changes:
         - createTable:
@@ -14,10 +14,11 @@ databaseChangeLog:
                     nullable: false
                     primaryKeyName: pk_stock
               - column:
-                  name: inventory
-                  type: number
+                  name: qty
+                  type: int
                   constraints:
-                    nullable: false              
+                    nullable: false
+                    checkConstraint: "qty >= 0"
               - column:
                   name: modified_date
                   type: TIMESTAMP
@@ -49,22 +50,29 @@ databaseChangeLog:
                   constraints:
                     nullable: false
               - column:
-                  name: orders_placed
-                  type: number
+                  name: version
+                  type: bigint
                   constraints:
                     nullable: false
+                  defaultValue: "0"
+
+
+        - addUniqueConstraint:
+            tableName: "stock"
+            columnNames: tenant_id, sku_id
+            constraintName: "uq_tenant_sku"
         - addForeignKeyConstraint:
             baseTableName: "stock"
             baseColumnNames: "sku_id"
-            constraintName: "fk_sku_id"
-            referencedTableName: "sku"
+            constraintName: "fk_sku_stock_id"
+            referencedTableName: "skus"
             referencedColumnNames: "sku_id"
             onDelete: CASCADE
             onUpdate: RESTRICT
         - addForeignKeyConstraint:
             baseTableName: "stock"
             baseColumnNames: "tenant_id"
-            constraintName: "fk_tenant_id"
+            constraintName: "fk_tenant_stock_id"
             referencedTableName: "tenants"
             referencedColumnNames: "tenant_id"
             onDelete: CASCADE

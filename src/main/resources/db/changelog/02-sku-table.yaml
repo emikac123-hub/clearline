@@ -1,10 +1,10 @@
 databaseChangeLog:
   - changeSet:
-      id: create-table-tenants
+      id: create-table-skus
       author: system
       changes:
         - createTable:
-            tableName: sku
+            tableName: skus
             columns:
               - column:
                   name: sku_id
@@ -12,7 +12,7 @@ databaseChangeLog:
                   constraints:
                     primaryKey: true
                     nullable: false
-                    primaryKeyName: pk_sku
+                    primaryKeyName: pk_skus
               - column:
                   name: display_name
                   type: VARCHAR(255)
@@ -49,9 +49,9 @@ databaseChangeLog:
                   constraints:
                     nullable: false
         - addForeignKeyConstraint:
-            baseTableName: "sku"
+            baseTableName: "skus"
             baseColumnNames: "tenant_id"
-            constraintName: "fk_tenant_id"
+            constraintName: "fk_tenant_sku_id"
             referencedTableName: "tenants"
             referencedColumnNames: "tenant_id"
             onDelete: CASCADE
