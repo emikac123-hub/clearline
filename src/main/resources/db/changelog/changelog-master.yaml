@@ -11,3 +11,9 @@ databaseChangeLog:
       file: db/changelog/05-order-lines-table.yaml
   - include:
       file: db/changelog/06-reservations-table.yaml
+  - include:
+      file: db/changelog/07-seed-tenants.yaml
+  - include:
+      file: db/changelog/08-seed-skus.yaml
+  - include:
+      file: db/changelog/09-seed-stock.yaml
