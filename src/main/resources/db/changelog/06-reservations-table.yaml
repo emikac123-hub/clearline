@@ -8,24 +8,25 @@ databaseChangeLog:
             columns:
               - column:
                   name: reservation_id
-                  type: VARCHAR(36)
+                  type: uuid
+                  defaultValueComputed: gen_random_uuid()
                   constraints:
                     primaryKey: true
                     nullable: false
                     primaryKeyName: pk_reservations
               - column:
                   name: order_id
-                  type: VARCHAR(36)
+                  type: uuid
                   constraints:
                     nullable: false
               - column:
                   name: tenant_id
-                  type: VARCHAR(36)
+                  type: uuid
                   constraints:
                     nullable: false
               - column:
                   name: sku_id
-                  type: VARCHAR(36)
+                  type: uuid
                   constraints:
                     nullable: false
               - column:

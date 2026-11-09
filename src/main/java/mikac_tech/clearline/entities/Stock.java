@@ -20,11 +20,6 @@ public class Stock extends AbstractAuditEntity {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private UUID stockId;
 
-
-    @ManyToOne
-    @JoinColumn(name = "order_id") 
-    private Orders order_id;
-
     @ManyToOne
     @JoinColumn(name = "sku_id") 
     private Skus sku_id;

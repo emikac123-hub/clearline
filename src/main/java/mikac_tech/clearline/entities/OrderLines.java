@@ -18,7 +18,7 @@ import lombok.EqualsAndHashCode;
 public class OrderLines extends AbstractAuditEntity {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private UUID orderLinesid;
+    private UUID orderLinesId;
 
     @ManyToOne 
     @JoinColumn(name = "order_id") 
