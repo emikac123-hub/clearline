@@ -42,7 +42,6 @@ databaseChangeLog:
               - column:
                   name: tenant_id
                   type: uuid
-
                   constraints:
                     nullable: false
               - column:
